@@ -99,9 +99,74 @@
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
-
     // Start your code here
     // You may move this JS to another file if you wish
+
+    // Add event handler to each button
+    errorBtns[0].addEventListener('click', (e) => {
+      console.log("Console Log Demo");
+    });
+
+    errorBtns[1].addEventListener('click', (e) => {
+      console.error("Console Error Demo");
+    });
+
+    let count = 0;
+    errorBtns[2].addEventListener('click', (e) => {
+      count++;
+      console.log("Count Button: %d", count);
+    });
+
+    errorBtns[3].addEventListener('click', (e) => {
+      console.warn("Console Warn Demo");
+    });
+
+    errorBtns[4].addEventListener('click', (e) => {
+      console.assert("Console Assert Demo")
+    });
+
+    errorBtns[5].addEventListener('click', (e) => {
+
+    });
+
+    errorBtns[6].addEventListener('click', (e) => {
+
+    });
+
+    errorBtns[7].addEventListener('click', (e) => {
+
+    });
+
+    errorBtns[8].addEventListener('click', (e) => {
+      console.log("")
+    });
+
+    errorBtns[9].addEventListener('click', (e) => {
+
+    });
+
+    errorBtns[10].addEventListener('click', (e) => {
+
+    });
+
+    errorBtns[11].addEventListener('click', (e) => {
+
+    });
+
+    errorBtns[12].addEventListener('click', (e) => {
+
+    });
+
+    errorBtns[13].addEventListener('click', (e) => {
+
+    });
+
+    errorBtns[14].addEventListener('click', (e) => {
+
+    });
+
+    
+
   </script>
 </body>
 
