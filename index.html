@@ -68,6 +68,8 @@
       </fieldset>
     </form>
 
+    
+
     <section id="error-btns">
       <button>Console Log</button>
       <button>Console Error</button>
@@ -111,58 +113,72 @@
       console.error("Console Error Demo");
     });
 
-    let count = 0;
     errorBtns[2].addEventListener('click', (e) => {
-      count++;
-      console.log("Count Button: %d", count);
+      console.count('Count Button');
     });
 
     errorBtns[3].addEventListener('click', (e) => {
       console.warn("Console Warn Demo");
     });
 
+    const errorMsg = 'The number does not equal to 10';
+    const number = 4
     errorBtns[4].addEventListener('click', (e) => {
-      console.assert("Console Assert Demo")
+      console.assert(number == 10, {number,errorMsg});
     });
 
     errorBtns[5].addEventListener('click', (e) => {
-
+      console.clear();
     });
 
     errorBtns[6].addEventListener('click', (e) => {
-
+      console.dir(errorBtns[6]);
     });
 
     errorBtns[7].addEventListener('click', (e) => {
-
+      console.dirxml(errorBtns[7]);
     });
 
     errorBtns[8].addEventListener('click', (e) => {
-      console.log("")
+      console.group();
     });
 
     errorBtns[9].addEventListener('click', (e) => {
-
+      console.groupEnd();
     });
 
+    let courses = [
+                   ["Software Engineer", 110], 
+                   ["Programming Languages", 130],
+                   ["Advanced Software Engineering", 112]
+                  ];
     errorBtns[10].addEventListener('click', (e) => {
-
+      console.table(courses);
     });
 
     errorBtns[11].addEventListener('click', (e) => {
-
+      console.time("Timer Button");
     });
 
     errorBtns[12].addEventListener('click', (e) => {
-
+      console.timeEnd("Timer Button");
     });
 
     errorBtns[13].addEventListener('click', (e) => {
-
+      const handleBtnClick = () => { deep(); };
+      const deep = () => { deeper(); };
+      const deeper = () => {deepest();};
+      const deepest = () => {console.trace();};
+      handleBtnClick();
     });
 
     errorBtns[14].addEventListener('click', (e) => {
-
+      console.log("Something is wrong, Please check");
+      const non_variable = document.querySelector('#nonexist');
+        non_variable.addEventListener('click', ()=>{
+      });
+      window.addEventListener("error", (event) => {  
+      });
     });
 
     
