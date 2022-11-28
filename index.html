@@ -89,7 +89,30 @@
     </section>
   </main>
 
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "668af43779f0423fb7f3d47ea0c99ba6"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+    </script>
+                        
+  <script>
+    class ValidationError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = "ValidationError";
+      }
+    }
+
+    class InputValidationError extends ValidationError {
+      constructor(property){
+        super("Invalid " + property + " input");
+        this.name = 'InputValidationError';
+        this.property = property;
+      }
+    }
+
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -97,7 +120,32 @@
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+
+      try{
+        if (firstNum == ''){
+          throw new InputValidationError('First');
+        }
+        if (secondNum == ''){
+          throw new InputValidationError('Second');
+        }
+
+        output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      }
+      catch(err){
+        if (err instanceof ReferenceError ||
+            err instanceof SyntaxError){
+          alert('Please enter a valid input');
+        }
+
+        if (err instanceof ValidationError) {
+          alert(err);
+        }
+        console.error(err);
+      }
+      finally{
+        alert('Another round?');
+      }
+     
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
@@ -182,7 +230,8 @@
     });
 
     
-
+  TrackJS.track('Testing TrackJS!');
+                        
   </script>
 </body>
 
